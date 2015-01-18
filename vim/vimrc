@@ -1,0 +1,177 @@
+"""""""""""""""""""""""""""""""""""""""""""
+" .vimrc of Lukasz Hryniuk aka lukequaint
+set nocompatible
+filetype plugin on
+filetype off
+
+"options for GUI
+set go-=m "remove menu bar
+set go-=T "remove toolbar
+set go-=r "remove right scroll bar
+set go-=L "remove left scroll bar
+set t_Co=256
+
+" highlight current line
+set cursorline
+set number
+
+" ctags file
+set tags=./tags;/
+
+"Bundles--------------------------------------------------------
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+"Bundles from github
+
+"vimwiki
+Bundle 'vim-scripts/vimwiki'
+"let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+"theme
+Bundle 'tomasr/molokai'
+"auto completion
+Bundle 'Valloric/YouCompleteMe'
+"snippets engine
+Bundle 'SirVer/ultisnips'
+"auto close parenthesis,quotes, etc.
+Bundle 'Raimondi/delimitMate'
+"NERDTree :)
+Bundle 'scrooloose/nerdtree'
+"Fuzzy file, buffer, mru, tag, etc finder
+Bundle 'kien/ctrlp.vim'
+"For Scala
+Bundle 'derekwyatt/vim-scala'
+
+"Similar to ctrl-p plus own interface creation
+Bundle 'Shougo/unite.vim'
+"Master git from vim
+Bundle 'tpope/vim-fugitive'
+"Status line
+Bundle 'bling/vim-airline'
+
+" Bundle 'scrooloose/syntastic' " TODO: make it run
+Bundle 'mileszs/ack.vim'
+Bundle 'moll/vim-bbye'
+Bundle 'tpope/vim-surround'
+"Bundle 'vim-scripts/DirDiff.vim'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'xuhdev/SingleCompile'
+
+filetype plugin indent on
+colorscheme molokai
+set encoding=utf-8
+syntax on " syntax highlighting
+" filetype plugin on 
+" filetype plugin indent on
+set background=dark
+
+" set
+
+set autoindent
+set autoread
+set backspace=2 " 2
+set expandtab " if set, hitting tab will produce spaces
+set hlsearch
+set ignorecase
+set incsearch
+" set list
+" set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set mouse=a 
+set nocompatible " compatibility with vi
+set nolazyredraw
+set nowb
+set nowrap
+set nu " line number
+set ruler
+set shiftround
+set shiftwidth=4 " number of spaces for indentation
+set showmode
+set smartcase
+set smartindent
+set smarttab
+set so=5 " lines under cursor
+set softtabstop=4
+set spelllang=pl
+set tabstop=4 " how many columns vim uses for tab - for displaying
+set textwidth=79
+set ttyfast
+set virtualedit=block
+set wildignore='.svn,*.o,*.d,*.a,*.gcno,*.gcda'
+set wildmenu
+set wildmode=list:longest
+
+"Backup staff
+set backup
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
+"Moving between buffers
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+
+"Compilation
+nmap <F9> :SCCompile<cr>
+nmap <F10> :SCCompileRun<cr>
+
+
+"noremap
+"clear highlighting after searching
+noremap <A-l> :nohlsearch<CR><A-l>
+
+"Change mapping for ultisnip to work with ycm
+let g:UltiSnipsExpandTrigger="<c-i>"
+
+"Global file for semantic hints - ycm
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+"Statusline stuff
+set laststatus=2 "Always show status line
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_right_sep = '>'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.whitespace = 'Ξ'
+
+nnoremap ; :
+
+"CtrlP settings
+nnoremap <leader>b :CtrlPBuffer<cr>
+let g:ctrlp_match_window= 'max:30'
+
+" disable arrows
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
+
+"Other bindings
+nnoremap <leader>w :Bdelete<cr>
+
+vnoremap <C-Insert> "+y
+
+noremap k gk
+noremap j gj
+
+" autocmd
+if has("autocmd")
+    autocmd FileType c setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
+    autocmd Filetype gitcommit setlocal spell textwidth=72
+endif

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+	<menu id="root-menu" label="Openbox 3">
+    <item label="Wylosuj tapetę">
+            <action name="Execute">
+                    <execute>
+                            /home/adonai/.bin/setwall
+                    </execute>
+                    <startupnotify>
+                            <enabled>
+                                    yes
+                            </enabled>
+                    </startupnotify>
+            </action>
+    </item>
+    <item label="Wyloguj">
+			<action name="Exit">
+				<prompt>
+					yes
+				</prompt>
+			</action>
+		</item>
+    <item label="Uruchom ponownie">
+            <action name="Execute">
+                    <execute>
+                            sudo shutdown -r now
+                    </execute>
+                    <startupnotify>
+                            <enabled>
+                                    yes
+                            </enabled>
+                    </startupnotify>
+            </action>
+    </item>
+    <item label="Wyłącz">
+            <action name="Execute">
+                    <command>
+                            sudo shutdown -h now
+                    </command>
+                    <startupnotify>
+                            <enabled>
+                                    yes
+                            </enabled>
+                    </startupnotify>
+            </action>
+    </item>
+	</menu>
+</openbox_menu>
